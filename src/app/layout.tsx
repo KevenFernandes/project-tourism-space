@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Barlow, Barlow_Condensed, Bellefair } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/components/Header";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const barlow = Barlow({
+  variable: "--font-barlow",
+  weight: "400",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const barlowCondensed = Barlow_Condensed({
+  variable: "--font-barlow-condensed",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const bellefair = Bellefair({
+  variable: "--font-bellefair",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -23,11 +32,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${barlow.variable} ${bellefair.variable} ${barlowCondensed.variable}`}
+    >
+      <body className={`antialiased text-[#fff]`}>
+        <div className="relative w-screen h-screen overflow-x-hidden overflow-y-auto">
+          <Header />
+
+          {children}
+        </div>
       </body>
     </html>
   );

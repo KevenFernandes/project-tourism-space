@@ -11,7 +11,6 @@ export function Container({ children }: ContainerProps) {
         "pt-24 h-full",
         "overflow-x-hidden",
         "overflow-y-auto",
-        "md:overflow-y-auto",
         "lg:pb-0 lg:pt-34"
       )}
     >

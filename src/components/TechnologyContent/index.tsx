@@ -25,7 +25,7 @@ export function TechnolodyContent({ technologys }: TechnologyContentProps) {
       className={clsx(
         "h-full p-6 gap-6",
         "flex flex-col",
-        "md:p-10 ",
+        "md:p-10",
         "lg:w-[1024px] lg:m-auto lg:px-6"
       )}
     >

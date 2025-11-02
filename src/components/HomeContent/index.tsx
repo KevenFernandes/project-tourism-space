@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 
 export function HomeContent() {
   const bgClasses = clsx(
-    "bg-cover bg-center h-screen",
+    "bg-cover bg-center h-screen w-screen",
     "bg-[url('/assets/home/background-home-mobile.jpg')]",
     "md:bg-[url('/assets/home/background-home-tablet.jpg')]",
     "lg:bg-[url('/assets/home/background-home-desktop.jpg')]"
@@ -25,8 +25,8 @@ export function HomeContent() {
             "h-full w-full flex",
             "gap-6 p-6 flex-col",
             "items-center justify-center",
-            "md:gap-12 md:py-[128px]",
-            "lg:flex-row lg:m-auto lg:items-end",
+            "md:gap-12 md:py-90",
+            "lg:flex-row lg:mx-auto lg:items-end",
             "lg:gap-0 lg:px-6 lg:w-[1024px]"
           )}
         >
@@ -35,7 +35,7 @@ export function HomeContent() {
               "flex flex-col gap-6",
               "w-full text-center",
               "md:gap-0 md:w-lg",
-              "lg:items-start"
+              "lg:items-start flex-1"
             )}
           >
             <h2

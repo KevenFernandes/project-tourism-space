@@ -32,14 +32,14 @@ export function CrewContent({ crew }: CrewContentProps) {
       <PageTitle pageNum={2} description="Meet your crew" />
       <div
         className={clsx(
-          "flex flex-col gap-8 text-center h-full",
-          "lg:flex-row lg:text-left"
+          "flex flex-col gap-8 text-center h-svw",
+          "lg:flex-row lg:text-left flex-1"
         )}
       >
         <div
           className={clsx(
             "flex flex-col gap-6 h-full",
-            "md:gap-10 md:w-[512px] md:m-auto md:pt-8",
+            "md:gap-10 md:w-[512px] md:mx-auto md:pt-8",
             "lg:min-w-[539px]"
           )}
         >
@@ -62,7 +62,7 @@ export function CrewContent({ crew }: CrewContentProps) {
               <p
                 className={clsx(
                   "text-[#D0D6F9] text-[15px]/[180%]",
-                  "flex-1 font-barlow h-[163px]",
+                  "flex-1 font-barlow ",
                   "md:text-base/[180%] md:h-[117px]",
                   "lg:text-lg/[180%]"
                 )}
@@ -97,15 +97,15 @@ export function CrewContent({ crew }: CrewContentProps) {
         <div
           className={clsx(
             "h-full w-full flex items-center justify-center",
-            "md:items-end"
+            "md:items-end min-h-[260px]"
           )}
         >
           <div
             className={clsx(
               "relative",
-              "w-[271px] min-h-[340px]",
-              "md:w-[446px] md:h-[446px]",
-              "lg:w-[539px] lg:h-[676px]"
+              "w-[271px] min-h-full",
+              "md:w-[446px] md:max-h-[446px]"
+              // "lg:w-[539px] lg:max-h-[676px]"
             )}
           >
             <Image

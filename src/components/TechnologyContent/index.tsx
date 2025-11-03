@@ -40,7 +40,7 @@ export function TechnolodyContent({ technologys }: TechnologyContentProps) {
         <div
           className={clsx(
             "flex justify-center items-end",
-            "h-full relative -mx-10",
+            "relative -mx-10 min-h-[260px]",
             "overflow-y-hidden",
             "lg:items-center lg:-mx-0 lg:flex-1",
             "lg:w-full lg:min-w-[608px] lg:h-[600px]"
@@ -51,7 +51,7 @@ export function TechnolodyContent({ technologys }: TechnologyContentProps) {
               "absolute w-full h-[258px]",
               "bg-cover bg-[center_70%]",
               "md:bg-center",
-              "lg:h-full"
+              "lg:h-full bg-red-400"
             )}
             style={{
               backgroundImage: `url(${technos[option].images.webfile})`,

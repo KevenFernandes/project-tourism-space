@@ -1,25 +1,26 @@
 "use client";
 import clsx from "clsx";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { PageTitle } from "../PageTitle";
 import { CrewTypes } from "@/models/crew.types";
+import { useState } from "react";
 
 type CrewContentProps = {
   crew: CrewTypes[];
 };
 
 export function CrewContent({ crew }: CrewContentProps) {
-  const [persons, setPersons] = useState(crew);
   const [option, setOption] = useState(0);
 
-  useEffect(() => {
-    setPersons(crew);
-  }, [crew]);
+  if (!crew || crew.length === 0) {
+    return <div className="text-center w-full">Carregando dados</div>;
+  }
 
   function changeOptions(idx: number) {
     setOption(idx);
   }
+
+  const currentCrew = crew[option];
 
   return (
     <div
@@ -52,10 +53,10 @@ export function CrewContent({ crew }: CrewContentProps) {
                   "lg:text-[32px]"
                 )}
               >
-                {crew[option].role}
+                {currentCrew.role}
               </h2>
               <h1 className={"text-2xl md:text-[40px] lg:text-[56px]"}>
-                {crew[option].name}
+                {currentCrew.name}
               </h1>
             </div>
             <div>
@@ -67,7 +68,7 @@ export function CrewContent({ crew }: CrewContentProps) {
                   "lg:text-lg/[180%]"
                 )}
               >
-                {crew[option].bio}
+                {currentCrew.bio}
               </p>
             </div>
           </div>
@@ -77,7 +78,7 @@ export function CrewContent({ crew }: CrewContentProps) {
               "lg:mb-12 lg:justify-start lg:gap-10"
             )}
           >
-            {persons.map((_, idx) => {
+            {crew.map((_, idx) => {
               return (
                 <button
                   onClick={() => changeOptions(idx)}
@@ -105,12 +106,11 @@ export function CrewContent({ crew }: CrewContentProps) {
               "relative",
               "w-[271px] min-h-full",
               "md:w-[446px] md:max-h-[446px]"
-              // "lg:w-[539px] lg:max-h-[676px]"
             )}
           >
             <Image
-              src={crew[option].images.png}
-              alt={crew[option].name}
+              src={currentCrew.images.png}
+              alt={currentCrew.name}
               fill
               className="object-contain mask-b-from-77% mask-b-to-98%"
             />

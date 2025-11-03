@@ -2,8 +2,8 @@
 import { DestinationsTypes } from "@/models/destination.types";
 import clsx from "clsx";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { PageTitle } from "../PageTitle";
+import { useState } from "react";
 
 type DestinationContentProps = {
   destinations: DestinationsTypes[];
@@ -11,15 +11,16 @@ type DestinationContentProps = {
 
 export function DestinationContent({ destinations }: DestinationContentProps) {
   const [options, setOptions] = useState(0);
-  const [planets, setPlanets] = useState(destinations);
 
-  useEffect(() => {
-    setPlanets(destinations);
-  }, [destinations]);
+  if (!destinations || destinations.length === 0) {
+    return <div className="text-center w-full">Carregando dados</div>;
+  }
 
   function changeOptions(option: number) {
     setOptions(option);
   }
+
+  const currentDestination = destinations[options];
 
   const statisticTitle = clsx(
     "font-barlow-condensed text-sm tracking-[2px] text-[#D0D6F9] uppercase"
@@ -56,8 +57,8 @@ export function DestinationContent({ destinations }: DestinationContentProps) {
             )}
           >
             <Image
-              src={`${planets[options].images.png}`}
-              alt={`${planets[options].name}`}
+              src={`${currentDestination.images.png}`}
+              alt={`${currentDestination.name}`}
               fill
               className="object-contain"
             />
@@ -75,7 +76,7 @@ export function DestinationContent({ destinations }: DestinationContentProps) {
             <div>
               <nav>
                 <ul className="flex gap-8 items-start">
-                  {planets.map((planet, idx) => {
+                  {destinations.map((planet, idx) => {
                     return (
                       <li key={idx}>
                         <button
@@ -108,7 +109,7 @@ export function DestinationContent({ destinations }: DestinationContentProps) {
                   "lg:text-[96px]"
                 )}
               >
-                {planets[options].name}
+                {currentDestination.name}
               </h1>
               <p
                 className={clsx(
@@ -117,7 +118,7 @@ export function DestinationContent({ destinations }: DestinationContentProps) {
                   "lg:text-lg/[180%]"
                 )}
               >
-                {planets[options].description}
+                {currentDestination.description}
               </p>
             </div>
             <div className="h-[1px] w-full bg-[#979797]/25"></div>
@@ -131,13 +132,13 @@ export function DestinationContent({ destinations }: DestinationContentProps) {
               <div className="flex flex-col gap-3 w-full">
                 <h3 className={statisticTitle}>Avg. Distance</h3>
                 <span className={statisticDescription}>
-                  {planets[options].distance}
+                  {currentDestination.distance}
                 </span>
               </div>
               <div className="flex flex-col gap-3 w-full">
                 <h3 className={statisticTitle}>Est. travel time</h3>
                 <span className={statisticDescription}>
-                  {planets[options].travel}
+                  {currentDestination.travel}
                 </span>
               </div>
             </div>

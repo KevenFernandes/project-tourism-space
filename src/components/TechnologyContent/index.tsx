@@ -1,7 +1,7 @@
 "use client";
 import { TechnologyTypes } from "@/models/technology.type";
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { PageTitle } from "../PageTitle";
 
 type TechnologyContentProps = {
@@ -9,16 +9,17 @@ type TechnologyContentProps = {
 };
 
 export function TechnolodyContent({ technologys }: TechnologyContentProps) {
-  const [technos, setTechnos] = useState<TechnologyTypes[]>(technologys);
   const [option, setOption] = useState<number>(0);
 
-  useEffect(() => {
-    setTechnos(technologys);
-  }, [technologys]);
+  if (!technologys || technologys.length === 0) {
+    return <div className="text-center w-full">Carregando dados</div>;
+  }
 
   function changeOption(idx: number) {
     setOption(idx);
   }
+
+  const currentTechnologys = technologys[option];
 
   return (
     <div
@@ -54,10 +55,10 @@ export function TechnolodyContent({ technologys }: TechnologyContentProps) {
               "lg:h-full"
             )}
             style={{
-              backgroundImage: `url(${technos[option].images.webfile})`,
+              backgroundImage: `url(${currentTechnologys.images.webfile})`,
             }}
             role="img"
-            aria-label={technos[option].name}
+            aria-label={currentTechnologys.name}
           ></div>
         </div>
         <div
@@ -75,7 +76,7 @@ export function TechnolodyContent({ technologys }: TechnologyContentProps) {
               "lg:flex-col lg:gap-8"
             )}
           >
-            {technos.map((_, idx) => {
+            {technologys.map((_, idx) => {
               return (
                 <button
                   className={clsx(
@@ -121,7 +122,7 @@ export function TechnolodyContent({ technologys }: TechnologyContentProps) {
                   "lg:text-[56px]"
                 )}
               >
-                {technos[option].name}
+                {currentTechnologys.name}
               </h1>
             </div>
             <div>
@@ -133,7 +134,7 @@ export function TechnolodyContent({ technologys }: TechnologyContentProps) {
                   "lg:text-lg/[180%] lg:text-left"
                 )}
               >
-                {technos[option].description}
+                {currentTechnologys.description}
               </p>
             </div>
           </div>

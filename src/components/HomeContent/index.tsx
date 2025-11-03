@@ -27,7 +27,8 @@ export function HomeContent() {
             "items-center justify-center",
             "md:gap-12 md:py-90",
             "lg:flex-row lg:mx-auto lg:items-end",
-            "lg:gap-0 lg:px-6 lg:w-[1024px]"
+            "lg:gap-0 lg:px-6 lg:w-[1024px]",
+            "lg:py-32"
           )}
         >
           <div

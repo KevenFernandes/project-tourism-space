@@ -51,7 +51,7 @@ export function TechnolodyContent({ technologys }: TechnologyContentProps) {
               "absolute w-full h-[258px]",
               "bg-cover bg-[center_70%]",
               "md:bg-center",
-              "lg:h-full bg-red-400"
+              "lg:h-full"
             )}
             style={{
               backgroundImage: `url(${technos[option].images.webfile})`,

@@ -1,9 +1,9 @@
 "use client";
-import { CrewTypes } from "@/models/crew.types";
 import clsx from "clsx";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { PageTitle } from "../PageTitle";
+import { CrewTypes } from "@/models/crew.types";
 
 type CrewContentProps = {
   crew: CrewTypes[];

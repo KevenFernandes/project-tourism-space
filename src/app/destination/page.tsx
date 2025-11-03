@@ -1,13 +1,16 @@
 import { DestinationContent } from "@/components/DestinationContent";
-import { getData } from "@/lib/query";
-import { DestinationsTypes } from "@/models/destination.types";
+import { getDataApi } from "@/lib/query-api";
+
+export const dynamic = "force-dynamic";
 
 export default async function Destination() {
-  const { destinations }: { destinations: DestinationsTypes[] } =
-    await getData();
+  let destinations;
 
-  if (!destinations) {
-    throw new Error("Falha ao carregar a lista de destinos.");
+  try {
+    const data = await getDataApi();
+    destinations = data.destinations;
+  } catch (error) {
+    console.error(error);
   }
 
   return (

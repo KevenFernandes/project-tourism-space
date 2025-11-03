@@ -1,17 +1,22 @@
 import { CrewContent } from "@/components/CrewContent/indext";
-import { getData } from "@/lib/query";
-import { CrewTypes } from "@/models/crew.types";
+import { getDataApi } from "@/lib/query-api";
+
+export const dynamic = "force-dynamic";
 
 export default async function Crew() {
-  const { crew }: { crew: CrewTypes[] } = await getData();
+  let crew;
 
-  if (!crew) {
-    throw new Error("Falha ao carregar a lista da equipe.");
+  try {
+    const data = await getDataApi();
+    crew = data.crew;
+  } catch (error) {
+    console.error(error);
   }
 
   return (
     <>
-      <CrewContent crew={crew} />
+      {" "}
+      <CrewContent crew={crew} />{" "}
     </>
   );
 }

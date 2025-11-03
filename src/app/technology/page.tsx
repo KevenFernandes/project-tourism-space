@@ -1,12 +1,16 @@
 import { TechnolodyContent } from "@/components/TechnologyContent";
-import { getData } from "@/lib/query";
-import { TechnologyTypes } from "@/models/technology.type";
+import { getDataApi } from "@/lib/query-api";
+
+export const dynamic = "force-dynamic";
 
 export default async function Technology() {
-  const { technology }: { technology: TechnologyTypes[] } = await getData();
+  let technology;
 
-  if (!technology) {
-    throw new Error("Falha ao carregar a lista de tecnologias.");
+  try {
+    const data = await getDataApi();
+    technology = data.technology;
+  } catch (error) {
+    console.error(error);
   }
 
   return (

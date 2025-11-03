@@ -13,7 +13,11 @@ export function DestinationContent({ destinations }: DestinationContentProps) {
   const [options, setOptions] = useState(0);
 
   if (!destinations || destinations.length === 0) {
-    return <div className="text-center w-full">Carregando dados</div>;
+    return (
+      <div className="text-center w-full font-bold">
+        Falha ao carregar dados 😒.
+      </div>
+    );
   }
 
   function changeOptions(option: number) {

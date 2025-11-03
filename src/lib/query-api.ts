@@ -1,13 +1,16 @@
-export async function getDataApi() {
-  const vercelUrl = process.env.VERCEL_URL;
+import path from "path";
+import fs from "fs/promises";
 
-  const baseURL = vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000";
+export async function getLocalData() {
+  try {
+    const jsonDirectory = path.join(process.cwd(), "src", "data");
+    const filePath = path.join(jsonDirectory, "data.json");
 
-  const res = await fetch(`${baseURL}/api/dados`);
-
-  if (!res.ok) {
-    throw new Error("Erro ao buscar dados");
+    const data = await fs.readFile(filePath, "utf-8");
+    const parsed = JSON.parse(data);
+    return parsed;
+  } catch (error) {
+    console.error("Erro ao buscar os dados.", error);
+    return [];
   }
-
-  return res.json();
 }

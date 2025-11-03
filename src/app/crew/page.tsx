@@ -1,16 +1,14 @@
 import { CrewContent } from "@/components/CrewContent/indext";
-import { getDataApi } from "@/lib/query-api";
-
-export const dynamic = "force-dynamic";
+import { getLocalData } from "@/lib/query-api";
 
 export default async function Crew() {
   let crew;
 
   try {
-    const data = await getDataApi();
+    const data = await getLocalData();
     crew = data.crew;
   } catch (error) {
-    console.error(error);
+    console.error("Error ao carregar as equipes", error);
   }
 
   return (

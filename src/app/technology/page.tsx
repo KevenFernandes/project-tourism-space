@@ -1,16 +1,14 @@
 import { TechnolodyContent } from "@/components/TechnologyContent";
-import { getDataApi } from "@/lib/query-api";
-
-export const dynamic = "force-dynamic";
+import { getLocalData } from "@/lib/query-api";
 
 export default async function Technology() {
-  let technology;
+  let technology = [];
 
   try {
-    const data = await getDataApi();
+    const data = await getLocalData();
     technology = data.technology;
   } catch (error) {
-    console.error(error);
+    console.error("Erro ao carregar as tecnologias", error);
   }
 
   return (

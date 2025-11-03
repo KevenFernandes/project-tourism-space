@@ -13,7 +13,11 @@ export function CrewContent({ crew }: CrewContentProps) {
   const [option, setOption] = useState(0);
 
   if (!crew || crew.length === 0) {
-    return <div className="text-center w-full">Carregando dados</div>;
+    return (
+      <div className="text-center w-full font-bold">
+        Falha ao carregar dados 😒.
+      </div>
+    );
   }
 
   function changeOptions(idx: number) {

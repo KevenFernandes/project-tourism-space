@@ -12,7 +12,9 @@ export function TechnolodyContent({ technologys }: TechnologyContentProps) {
   const [option, setOption] = useState<number>(0);
 
   if (!technologys || technologys.length === 0) {
-    return <div className="text-center w-full">Carregando dados</div>;
+    <div className="text-center w-full font-bold">
+      Falha ao carregar dados 😒.
+    </div>;
   }
 
   function changeOption(idx: number) {

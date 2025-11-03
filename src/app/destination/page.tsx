@@ -1,16 +1,14 @@
 import { DestinationContent } from "@/components/DestinationContent";
-import { getDataApi } from "@/lib/query-api";
-
-export const dynamic = "force-dynamic";
+import { getLocalData } from "@/lib/query-api";
 
 export default async function Destination() {
   let destinations;
 
   try {
-    const data = await getDataApi();
+    const data = await getLocalData();
     destinations = data.destinations;
   } catch (error) {
-    console.error(error);
+    console.error("Erro ao carregar os destinos", error);
   }
 
   return (
